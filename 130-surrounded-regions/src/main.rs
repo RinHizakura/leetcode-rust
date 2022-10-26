@@ -1,7 +1,10 @@
 struct Solution;
+
 impl Solution {
-    pub fn recursive(board: &mut Vec<Vec<char>>, i: usize, j: usize, m: usize, n: usize) {
-        if board[i][j] == 'X' {
+
+    pub fn recursive(board: &mut Vec<Vec<char>>, i: usize, j: usize,
+                m: usize, n: usize) {
+        if board[i][j] != 'O' {
             return;
         }
 
@@ -32,7 +35,7 @@ impl Solution {
             Self::recursive(board, 0, j, m, n);
         }
 
-        for i in 1..m - 1 {
+        for i in 1..m-1 {
             Self::recursive(board, i, 0, m, n);
             Self::recursive(board, i, n - 1, m, n);
         }
@@ -52,6 +55,7 @@ impl Solution {
         }
     }
 }
+
 fn main() {
     let mut v = vec![vec!['O', 'O'], vec!['O', 'O']];
 
